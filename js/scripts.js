@@ -165,7 +165,7 @@ $(document).ready(function () {
     /********************** Social Share buttons ***********************/
     var share_bar = document.getElementsByClassName('share-bar');
     // Use GitHub Pages URL
-    var shareUrl = 'https://mryayyet.github.io/ZandraRuelWedding2026/';
+    var shareUrl = 'https://MrYayyeT.github.io/ZandraRuelWedding2026/';
     var shareText = encodeURIComponent(document.title);
 
     for (var i = 0; i < share_bar.length; i++) {
