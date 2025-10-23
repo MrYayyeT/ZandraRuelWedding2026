@@ -35,7 +35,7 @@
         height: 100%;
         top: 0;
         left: 0;
-        z-index: 99999;
+        z-index: 998;
         visibility: hidden;
         opacity: 0;
         -webkit-transition: opacity 0.5s, visibility 0s 0.5s;
@@ -362,5 +362,387 @@
 
     .rsvp {
         padding-top: 20px;
+    }
+}
+
+/* ============================================
+   CUSTOM WEDDING STYLES
+   ============================================ */
+
+/* Background */
+body#top {
+    background-image: url('../img/MAINBG.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+/* Navigation Bar - stays on top during scroll but below modals */
+.navigation,
+.fixed,
+section.navigation {
+    z-index: 999 !important;
+}
+
+/* Override hamburger menu button z-index */
+.nav-toggle {
+    z-index: 999 !important;
+}
+
+/* Hero Logo */
+.hero {
+    position: relative;
+    z-index: 10;
+}
+
+.hero-content img {
+    transform: scale(1.75);
+    position: relative;
+    top: -140px;
+}
+
+/* Invitation Section */
+#invitation,
+#invitation h3,
+#invitation p {
+    color: #5a601f !important;
+}
+
+/* How We Met Section */
+#intro {
+    position: relative;
+    z-index: 1;
+}
+
+#intro .header,
+#intro p {
+    color: #5a601f;
+}
+
+
+.flower-decoration {
+    position: relative;
+    overflow: visible;
+}
+
+
+/* Flower 1 - completely hidden until scroll triggers animation */
+img[src="img/flower-1.png"]:not(.animated) {
+    display: none !important;
+}
+
+img[src="img/flower-1.png"] {
+    width: 350% !important;
+    max-width: none !important;
+    position: absolute !important;
+    top: 154px !important;
+    left: -250% !important;
+    right: auto !important;
+    margin-right: 0 !important;
+    z-index: -1 !important;
+    rotate: 18deg !important;
+}
+
+img[src="img/flower-1.png"].animated {
+    display: block !important;
+    -webkit-animation-delay: 0.6s !important;
+    animation-delay: 0.6s !important;
+}
+
+/* Flower 2 - completely hidden until scroll triggers animation */
+img[src="img/flower2.png"]:not(.animated) {
+    display: none !important;
+}
+
+img[src="img/flower2.png"] {
+    width: 300% !important;
+    max-width: none !important;
+    position: absolute !important;
+    top: -450px !important;
+    left: -250% !important;
+    right: auto !important;
+    margin-right: 0 !important;
+    z-index: 0 !important;
+    rotate: -15deg !important;
+}
+
+img[src="img/flower2.png"].animated {
+    display: block !important;
+    -webkit-animation-delay: 0.3s !important;
+    animation-delay: 0.3s !important;
+}
+
+/* Flower 3 - completely hidden until scroll triggers animation */
+img[src="img/flower3.png"]:not(.animated) {
+    display: none !important;
+}
+
+img[src="img/flower3.png"] {
+    width: 320% !important;
+    max-width: none !important;
+    position: absolute !important;
+    top: 154px !important;
+    right: -250% !important;
+    left: auto !important;
+    z-index: -1 !important;
+    rotate: -18deg !important;
+}
+
+img[src="img/flower3.png"].animated {
+    display: block !important;
+    -webkit-animation-delay: 0.6s !important;
+    animation-delay: 0.6s !important;
+}
+
+/* Flower 4 - completely hidden until scroll triggers animation */
+img[src="img/flower4.png"]:not(.animated) {
+    display: none !important;
+}
+
+img[src="img/flower4.png"] {
+    width: 300% !important;
+    max-width: none !important;
+    position: absolute !important;
+    top: -500px !important;
+    right: -250% !important;
+    left: auto !important;
+    z-index: 0 !important;
+    rotate: 15deg !important;
+}
+
+img[src="img/flower4.png"].animated {
+    display: block !important;
+    -webkit-animation-delay: 0.3s !important;
+    animation-delay: 0.3s !important;
+}
+
+.flower-decoration img {
+    width: 350%;
+    max-width: none;
+    position: absolute;
+    top: 154px;
+    left: 0;
+    z-index: -1;
+    rotate: 18deg;
+}
+
+
+.events {
+    background-color: #fff4e7 !important;
+    position: relative;
+    z-index: 2;
+}
+
+.events .header,
+.events h5,
+.events p,
+.events strong,
+.events .time {
+    color: #555f28;
+}
+
+.events .leftcol {
+    border-right-color: #555f28 ;
+}
+
+.events .btn-accent {
+    background-color: transparent !important;
+    border-color: #555f28 !important;
+    color: #555f28 !important;
+}
+
+.events .btn-accent:hover {
+    background-color: #555f28 !important;
+    border-color: #555f28 !important;
+    color: #fff4e7 !important;
+}
+
+/* Dress Code Modal */
+/* Modal Layering - Ensure modal appears above navigation (999) */
+.modal-backdrop {
+    z-index: 10000 !important;
+}
+
+.modal,
+#dc-modal,
+#dc-modal.modal {
+    z-index: 10001 !important;
+}
+
+#dc-modal .modal-dialog {
+    position: relative;
+    z-index: 10002 !important;
+}
+
+#dc-modal .modal-content {
+    position: relative;
+    z-index: 10003 !important;
+}
+
+/* While any Bootstrap modal is open, prevent nav from capturing clicks */
+body.modal-open section.navigation,
+body.modal-open .navigation,
+body.modal-open .fixed,
+body.modal-open header,
+body.modal-open .header-nav,
+body.modal-open .nav-toggle {
+    pointer-events: none !important;
+}
+
+/* While modal is open, explicitly place nav below modal stack */
+body.modal-open section.navigation,
+body.modal-open .navigation,
+body.modal-open .fixed,
+body.modal-open header,
+body.modal-open .nav-toggle,
+body.modal-open .header-nav {
+    z-index: -1 !important;
+}
+
+/* While modal is open, drop events stacking context so modal isn't trapped */
+body.modal-open .events {
+    z-index: auto !important;
+}
+
+/* Absolute max for modal/backdrop to beat any theme z-indexes */
+body.modal-open .modal-backdrop {
+    z-index: 2147483646 !important;
+}
+body.modal-open .modal,
+body.modal-open #dc-modal,
+body.modal-open #dc-modal.modal,
+body.modal-open #dc-modal .modal-dialog,
+body.modal-open #dc-modal .modal-content {
+    z-index: 2147483647 !important;
+}
+
+/* But keep the close (X) fully clickable above its siblings */
+#dc-modal .modal-body .close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 10004 !important;
+}
+
+#dc-modal .modal-content {
+    background-image: url('../img/MAINBG.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+#dc-modal .modal-body {
+    background-color: transparent !important;
+    padding: 0 !important;
+    position: relative;
+}
+
+#dc-modal .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    opacity: 1;
+    color: #555f28;
+    font-size: 30px;
+}
+
+#dc-modal h3,
+#dc-modal h5,
+#dc-modal p,
+#dc-modal strong,
+#dc-modal .time {
+    color: #555f28 !important;
+}
+
+/* Instagram Section */
+#instagram img {
+    transform: scale(1.25);
+}
+
+/* Responsive adjustments for custom elements */
+@media screen and (max-width: 1200px) {
+    .hero-content img {
+        transform: scale(1.5);
+        top: -120px;
+    }
+    
+    .flower-decoration img {
+        width: 300%;
+        top: 120px;
+    }
+    
+    img[src="img/flower2.png"] {
+        width: 250% !important;
+        top: -30px !important;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .hero-content img {
+        transform: scale(1.3);
+        top: -100px;
+    }
+    
+    .flower-decoration img {
+        width: 250%;
+        top: 100px;
+        margin-right: -10%;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .hero-content img {
+        transform: scale(1.2);
+        top: -80px;
+    }
+    
+    .flower-decoration img {
+        width: 200%;
+        top: 80px;
+        margin-right: -15%;
+    }
+    
+    #instagram img {
+        transform: scale(1.15);
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .hero-content img {
+        transform: scale(1);
+        top: -40px;
+    }
+    
+    .flower-decoration {
+        display: none;
+    }
+    
+    img[src="img/flower2.png"] {
+        display: none !important;
+    }
+    
+    img[src="img/flower3.png"] {
+        display: none !important;
+    }
+    
+    img[src="img/flower4.png"] {
+        display: none !important;
+    }
+    
+    #instagram img {
+        transform: scale(1);
+    }
+    
+    body#top {
+        background-attachment: scroll;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero-content img {
+        transform: scale(0.9);
+        top: -20px;
     }
 }

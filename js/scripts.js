@@ -1,16 +1,42 @@
 $(document).ready(function () {
 
+    /***************** Custom Flower Animation on Scroll ******************/
+    var hasScrolled = false;
+    var flowersAnimated = false;
+    
+    $(window).on('scroll', function() {
+        hasScrolled = true;
+        
+        if (!flowersAnimated) {
+            var scrollPos = $(window).scrollTop();
+            var introSection = $('#intro').offset().top;
+            var triggerPoint = introSection - ($(window).height() * 0.7);
+            
+            if (scrollPos > triggerPoint) {
+                // Animate flowers instantly
+                $('img[src="img/flower2.png"]').addClass('animated fadeInLeft');
+                $('img[src="img/flower-1.png"]').addClass('animated fadeInLeft');
+                $('img[src="img/flower4.png"]').addClass('animated fadeInRight');
+                $('img[src="img/flower3.png"]').addClass('animated fadeInRight');
+                
+                flowersAnimated = true;
+            }
+        }
+    });
+
     /***************** Waypoints ******************/
 
     $('.wp1').waypoint(function () {
-        $('.wp1').addClass('animated fadeInLeft');
+        // Only animate non-flower wp1 elements
+        $('.wp1').not('img[src*="flower"]').addClass('animated fadeInLeft');
     }, {
-        offset: '75%'
+        offset: '30%'
     });
     $('.wp2').waypoint(function () {
-        $('.wp2').addClass('animated fadeInRight');
+        // Only animate non-flower wp2 elements
+        $('.wp2').not('img[src*="flower"]').addClass('animated fadeInRight');
     }, {
-        offset: '75%'
+        offset: '30%'
     });
     $('.wp3').waypoint(function () {
         $('.wp3').addClass('animated fadeInLeft');
@@ -138,24 +164,19 @@ $(document).ready(function () {
 
     /********************** Social Share buttons ***********************/
     var share_bar = document.getElementsByClassName('share-bar');
-    var po = document.createElement('script');
-    po.type = 'text/javascript';
-    po.async = true;
-    po.src = 'https://apis.google.com/js/platform.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(po, s);
+    // Use GitHub Pages URL
+    var shareUrl = 'https://mryayyet.github.io/ZandraRuelWedding2026/';
+    var shareText = encodeURIComponent(document.title);
 
     for (var i = 0; i < share_bar.length; i++) {
         var html = '<iframe allowtransparency="true" frameborder="0" scrolling="no"' +
-            'src="https://platform.twitter.com/widgets/tweet_button.html?url=' + encodeURIComponent(window.location) + '&amp;text=' + encodeURIComponent(document.title) + '&amp;via=ramswarooppatra&amp;hashtags=ramandantara&amp;count=horizontal"' +
+            'src="https://platform.twitter.com/widgets/tweet_button.html?url=' + encodeURIComponent(shareUrl) + '&amp;text=' + shareText + '&amp;hashtags=ZandriAndRuel&amp;count=horizontal"' +
             'style="width:105px; height:21px;">' +
             '</iframe>' +
-
-            '<iframe src="//www.facebook.com/plugins/like.php?href=' + encodeURIComponent(window.location) + '&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=21&amp;appId=101094500229731&amp;width=150" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>' +
-
-            '<div class="g-plusone" data-size="medium"></div>';
-
-        // '<iframe src="https://plusone.google.com/_/+1/fastbutton?bsv&amp;size=medium&amp;url=' + encodeURIComponent(window.location) + '" allowtransparency="true" frameborder="0" scrolling="no" title="+1" style="width:105px; height:21px;"></iframe>';
+            
+            '<a href="https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl) + '" target="_blank" style="display:inline-block; padding:3px 8px; background:#4267B2; color:white; text-decoration:none; border-radius:3px; font-size:11px; font-family:Arial; margin-left:5px; vertical-align:top;">' +
+            '<i class="fa fa-facebook" style="margin-right:3px;"></i>Share' +
+            '</a>';
 
         share_bar[i].innerHTML = html;
         share_bar[i].style.display = 'inline-block';
@@ -184,10 +205,10 @@ $(document).ready(function () {
         },
         data: {
             // Event title
-            title: "Ram and Antara's Wedding",
+            title: "Zandra and Ruel's Wedding",
 
             // Event start date
-            start: new Date('Nov 27, 2017 10:00'),
+            start: new Date('March 28, 2026 16:00'),
 
             // Event duration (IN MINUTES)
             // duration: 120,
@@ -241,7 +262,7 @@ $(document).ready(function () {
 
 // Google map
 function initMap() {
-    var location = {lat: 22.5932759, lng: 88.27027720000001};
+    var location = {lat: 14.1118088, lng: 120.93007452372359};
     var map = new google.maps.Map(document.getElementById('map-canvas'), {
         zoom: 15,
         center: location,
