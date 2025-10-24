@@ -1,0 +1,221 @@
+/* Dress Code Section Styles */
+
+#dress-code {
+    background: #fff4e7;
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+#dress-code .header {
+    color: #5a601f !important;
+}
+
+/* Spring Formal Header */
+.dress-code-header {
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+    margin-bottom: 40px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: scale(0.8);
+}
+
+/* Principal Sponsors */
+.dress-code-principal {
+    position: relative;
+    max-width: 76%;
+    width: 100%;
+    padding: 0 15px;
+    top: -50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+    transform: scale(0.8);
+
+}
+
+/* Guests */
+.dress-code-guests {
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    padding: 0 15px;
+    top: -160px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: scale(1.3);
+
+    
+}
+
+/* Ladies */
+.dress-code-ladies {
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    padding: 0 15px;
+    top: -78px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: scale(0.8);
+}
+
+/* Mens */
+.dress-code-mens {
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    padding: 0 15px;
+    top: -90px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: scale(0.7);
+    
+}
+
+/* Container for each image */
+.dress-code-item {
+    margin-bottom: 40px;
+    text-align: center;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Flower decoration */
+.dress-code-flower {
+    position: absolute;
+    width: 600%;
+    max-width: none;
+    top: 100px;
+    right: -600px;
+    animation-duration: 2s !important;
+    rotate: 10deg;
+}
+
+/* Left flower decoration */
+.dress-code-flower-left {
+    position: absolute;
+    width: 500%;
+    max-width: none;
+    top: 110px;
+    left: -650px;
+    animation-duration: 2s !important;
+    rotate: 10deg;
+}
+
+/* Bottom flower decoration */
+.dress-code-flower-bottom {
+    position: absolute;
+    width: 850px;
+    max-width: none;
+    left: 0%;
+    transform: translateX(-50%);
+    bottom: -700px;
+    animation-duration: 2s !important;
+}
+
+/* Uniform text colors for sections below dress code */
+#map h3,
+#map p,
+#rsvp h3,
+#rsvp p,
+#instagram h3,
+#instagram p,
+#eng-pics h3,
+#eng-pics p {
+    color: #5a601f !important;
+}
+
+/* Map iframe background */
+#map iframe {
+    background: #fff4e7;
+}
+
+/* Map content info box background */
+#map-content {
+    background: #fff4e7 !important;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* Map content text colors */
+#map-content h5,
+#map-content p,
+#map-content a {
+    color: #5a601f !important;
+}
+
+/* Map content buttons styling */
+#map-content .btn {
+    background-color: transparent !important;
+    border-color: #5a601f !important;
+    color: #5a601f !important;
+}
+
+#map-content .btn:hover {
+    background-color: #5a601f !important;
+    border-color: #5a601f !important;
+    color: #fff4e7 !important;
+}
+
+/* RSVP form styling */
+#rsvp h3,
+#rsvp p {
+    color: #5a601f !important;
+}
+
+/* RSVP form icons */
+#rsvp .fa {
+    color: #5a601f !important;
+}
+
+/* RSVP form input borders */
+#rsvp input {
+    border-color: #5a601f !important;
+    color: #5a601f !important;
+}
+
+#rsvp input:focus {
+    border-color: #5a601f !important;
+    box-shadow: 0 0 5px rgba(90, 96, 31, 0.3) !important;
+}
+
+/* RSVP form button */
+#rsvp .btn {
+    background-color: transparent !important;
+    border-color: #5a601f !important;
+    color: #5a601f !important;
+}
+
+#rsvp .btn:hover {
+    background-color: #5a601f !important;
+    border-color: #5a601f !important;
+    color: #fff4e7 !important;
+}
+
+/* Alert messages should appear above overlay */
+#alert-wrapper {
+    position: relative;
+    z-index: 9999 !important;
+}
+
+#alert-wrapper .alert {
+    position: relative;
+    z-index: 9999 !important;
+}
+
+/* Responsive adjustments - I'll add these later after you adjust the styles */
+@media (max-width: 768px) {
+    .dress-code-header {
+        max-width: 100%;
+    }
+}
+

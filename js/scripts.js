@@ -1,8 +1,43 @@
 $(document).ready(function () {
 
+    /***************** Hero Background Slideshow ******************/
+    var heroImages = [
+        'img/hero-min.jpg',
+        'img/eng_pics/_RFX3064-lg.jpg'
+    ];
+    var currentImageIndex = 0;
+    
+    // Create background overlay div for smooth transitions
+    $('section.hero').css('position', 'relative');
+    $('section.hero').prepend('<div class="hero-bg" style="position:absolute;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:center;transition:opacity 1.5s ease-in-out;z-index:0;"></div>');
+    var $heroBg = $('.hero-bg');
+    $heroBg.css('background-image', 'url(' + heroImages[0] + ')');
+    
+    // Ensure content is above backgroundss
+    $('.hero .container').css('position', 'relative').css('z-index', '1');
+    $('.hero .down-arrow').css({'position': 'absolute', 'z-index': '10', 'left': '50%', 'margin-left': '-15px', 'bottom': '30px'});
+    $('section.navigation').css('z-index', '999');
+    
+    function changeHeroBackground() {
+        currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+        
+        // Fade out current image
+        $heroBg.css('opacity', '0');
+        
+        // After fade out, change image and fade in
+        setTimeout(function() {
+            $heroBg.css('background-image', 'url(' + heroImages[currentImageIndex] + ')');
+            $heroBg.css('opacity', '1');
+        }, 1500);
+    }
+    
+    // Change image every 7 seconds
+    setInterval(changeHeroBackground, 7000);
+
     /***************** Custom Flower Animation on Scroll ******************/
     var hasScrolled = false;
     var flowersAnimated = false;
+    var dressCodeFlowersAnimated = false;
     
     $(window).on('scroll', function() {
         hasScrolled = true;
@@ -22,6 +57,23 @@ $(document).ready(function () {
                 flowersAnimated = true;
             }
         }
+        
+        if (!dressCodeFlowersAnimated) {
+            var scrollPos = $(window).scrollTop();
+            var dressCodeSection = $('#dress-code').offset().top;
+            var triggerPoint = dressCodeSection - ($(window).height() * 0.7);
+            
+            if (scrollPos > triggerPoint) {
+                // Animate dress code flowers the same way as how we met flowers
+                $('img[src="img/dress_code/flower_2.png"]').addClass('animated fadeInLeft');
+                $('img[src="img/dress_code/flower_1.png"]').addClass('animated fadeInRight');
+                $('img[src="img/dress_code/flower_3.png"]').addClass('animated fadeInUp');
+                
+                dressCodeFlowersAnimated = true;
+            }
+        }
+        
+        
     });
 
     /***************** Waypoints ******************/
@@ -38,11 +90,14 @@ $(document).ready(function () {
     }, {
         offset: '30%'
     });
+    
     $('.wp3').waypoint(function () {
         $('.wp3').addClass('animated fadeInLeft');
     }, {
         offset: '75%'
     });
+    
+    
     $('.wp4').waypoint(function () {
         $('.wp4').addClass('animated fadeInRight');
     }, {
@@ -162,25 +217,78 @@ $(document).ready(function () {
 
     });
 
-    /********************** Social Share buttons ***********************/
-    var share_bar = document.getElementsByClassName('share-bar');
-    // Use GitHub Pages URL
-    var shareUrl = 'https://MrYayyeT.github.io/ZandraRuelWedding2026/';
-    var shareText = encodeURIComponent(document.title);
+	/********************** Countdown Timer ***********************/
+	var share_bar = document.getElementsByClassName('share-bar');
+	var countdownTargetDate = new Date('March 28, 2026 16:00');
 
-    for (var i = 0; i < share_bar.length; i++) {
-        var html = '<iframe allowtransparency="true" frameborder="0" scrolling="no"' +
-            'src="https://platform.twitter.com/widgets/tweet_button.html?url=' + encodeURIComponent(shareUrl) + '&amp;text=' + shareText + '&amp;hashtags=ZandriAndRuel&amp;count=horizontal"' +
-            'style="width:105px; height:21px;">' +
-            '</iframe>' +
-            
-            '<a href="https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl) + '" target="_blank" style="display:inline-block; padding:3px 8px; background:#4267B2; color:white; text-decoration:none; border-radius:3px; font-size:11px; font-family:Arial; margin-left:5px; vertical-align:top;">' +
-            '<i class="fa fa-facebook" style="margin-right:3px;"></i>Share' +
-            '</a>';
+	for (var i = 0; i < share_bar.length; i++) {
+		var html = '' +
+			'<div class="countdown" style="display:flex; gap:10px; justify-content:center; align-items:center; flex-wrap:wrap; padding:12px 20px; color:#fff;">' +
+				'<div style="text-align:center; min-width:50px;">' +
+					'<div id="cd-days-' + i + '" style="font-size:22px; font-weight:700; line-height:1;">--</div>' +
+					'<div style="font-size:10px; opacity:0.8;">Days</div>' +
+				'</div>' +
+				'<div style="text-align:center; min-width:50px;">' +
+					'<div id="cd-hours-' + i + '" style="font-size:22px; font-weight:700; line-height:1;">--</div>' +
+					'<div style="font-size:10px; opacity:0.8;">Hours</div>' +
+				'</div>' +
+				'<div style="text-align:center; min-width:50px;">' +
+					'<div id="cd-mins-' + i + '" style="font-size:22px; font-weight:700; line-height:1;">--</div>' +
+					'<div style="font-size:10px; opacity:0.8;">Minutes</div>' +
+				'</div>' +
+				'<div style="text-align:center; min-width:50px;">' +
+					'<div id="cd-secs-' + i + '" style="font-size:22px; font-weight:700; line-height:1;">--</div>' +
+					'<div style="font-size:10px; opacity:0.8;">Seconds</div>' +
+				'</div>' +
+			'</div>' +
+			'<div id="cd-expired-' + i + '" style="display:none; font-size:16px; font-weight:600; margin-top:8px;">It\'s wedding time! 🎉</div>';
 
-        share_bar[i].innerHTML = html;
-        share_bar[i].style.display = 'inline-block';
-    }
+		share_bar[i].innerHTML = html;
+		share_bar[i].style.display = 'inline-block';
+
+		(function(index){
+			function updateCountdown() {
+				var now = new Date();
+				var diff = countdownTargetDate.getTime() - now.getTime();
+				var expiredEl = document.getElementById('cd-expired-' + index);
+				var dEl = document.getElementById('cd-days-' + index);
+				var hEl = document.getElementById('cd-hours-' + index);
+				var mEl = document.getElementById('cd-mins-' + index);
+				var sEl = document.getElementById('cd-secs-' + index);
+
+				if (diff <= 0) {
+					if (expiredEl) expiredEl.style.display = 'block';
+					if (dEl) dEl.textContent = '0';
+					if (hEl) hEl.textContent = '0';
+					if (mEl) mEl.textContent = '0';
+					if (sEl) sEl.textContent = '0';
+					return; // stop updating once expired
+				}
+
+				var seconds = Math.floor(diff / 1000);
+				var days = Math.floor(seconds / 86400);
+				seconds -= days * 86400;
+				var hours = Math.floor(seconds / 3600);
+				seconds -= hours * 3600;
+				var minutes = Math.floor(seconds / 60);
+				seconds -= minutes * 60;
+
+				if (dEl) dEl.textContent = String(days);
+				if (hEl) hEl.textContent = String(hours).padStart(2, '0');
+				if (mEl) mEl.textContent = String(minutes).padStart(2, '0');
+				if (sEl) sEl.textContent = String(seconds).padStart(2, '0');
+			}
+
+			updateCountdown();
+			var intervalId = setInterval(function(){
+				updateCountdown();
+				// if expired, clear interval to avoid unnecessary updates
+				if ((new Date()).getTime() >= countdownTargetDate.getTime()) {
+					clearInterval(intervalId);
+				}
+			}, 1000);
+		})(i);
+	}
 
     /********************** Embed youtube video *********************/
     $('.player').YTPlayer();
@@ -235,23 +343,23 @@ $(document).ready(function () {
 
         $('#alert-wrapper').html(alert_markup('info', '<strong>Just a sec!</strong> We are saving your details.'));
 
-        if (MD5($('#invite_code').val()) !== 'b0e53b10c1f55ede516b240036b88f40'
-            && MD5($('#invite_code').val()) !== '2ac7f43695eb0479d5846bb38eec59cc') {
+        if (MD5($('#invite_code').val()) !== '202cb962ac59075b964b07152d234b70'
+            && MD5($('#invite_code').val()) !== '250cf8b51c773f3f8dc8b4be867a9a02') {
             $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> Your invite code is incorrect.'));
         } else {
-            $.post('https://script.google.com/macros/s/AKfycbyo0rEknln8LedEP3bkONsfOh776IR5lFidLhJFQ6jdvRiH4dKvHZmtoIybvnxpxYr2cA/exec', data)
+            $.post('https://script.google.com/macros/s/AKfycbwGiA5KVTOafPIPmu3GN1b-pANSK8XVjNpqTwsxQ6zmyBii4LQA83uS9XFIb5-cibkF/exec', data)
                 .done(function (data) {
                     console.log(data);
                     if (data.result === "error") {
                         $('#alert-wrapper').html(alert_markup('danger', data.message));
                     } else {
-                        $('#alert-wrapper').html('');
-                        $('#rsvp-modal').modal('show');
+                        $('#alert-wrapper').html(alert_markup('success', '<strong>Thank you!</strong> Your RSVP has been submitted.'));
+                        $('#rsvp-form')[0].reset(); // Clear the form
                     }
                 })
-                .fail(function (data) {
-                    console.log(data);
-                    $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> There is some issue with the server. '));
+                .fail(function (jqXHR, textStatus, errorThrown) {
+                    console.error("AJAX Error: ", textStatus, errorThrown);
+                    $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> There is some issue with the server. Please try again later.'));
                 });
         }
     });
