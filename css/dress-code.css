@@ -222,5 +222,10 @@
     .dress-code-header {
         max-width: 100%;
     }
+    
+    /* Move mens section up on mobile to prevent it being too close to guests */
+    .dress-code-mens {
+        top: -150px !important;
+    }
 }
 
