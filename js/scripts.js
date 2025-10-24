@@ -223,7 +223,7 @@ $(document).ready(function () {
 
 	for (var i = 0; i < share_bar.length; i++) {
 		var html = '' +
-			'<div class="countdown" style="display:flex; gap:10px; justify-content:center; align-items:center; flex-wrap:wrap; padding:12px 20px; color:#fff;">' +
+			'<div class="countdown" style="display:flex; gap:10px; justify-content:flex-start; align-items:center; flex-wrap:wrap; padding:12px 20px; color:#fff; margin-left:50px;">' +
 				'<div style="text-align:center; min-width:50px;">' +
 					'<div id="cd-days-' + i + '" style="font-size:22px; font-weight:700; line-height:1;">--</div>' +
 					'<div style="font-size:10px; opacity:0.8;">Days</div>' +
