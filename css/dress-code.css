@@ -212,6 +212,11 @@
     z-index: 9999 !important;
 }
 
+/* Fix down arrow centering */
+.down-arrow {
+    left: 50% !important;
+}
+
 /* Responsive adjustments - I'll add these later after you adjust the styles */
 @media (max-width: 768px) {
     .dress-code-header {
